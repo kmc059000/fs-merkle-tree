@@ -6,14 +6,14 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>69b30647-cd2d-4923-a85d-4c0e793949cb</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <RootNamespace>MerkleTree</RootNamespace>
-    <AssemblyName>MerkleTree</AssemblyName>
+    <ProjectGuid>ab123fa9-2132-444f-a162-51340d874113</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>MerkleTree.Tests</RootNamespace>
+    <AssemblyName>MerkleTree.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <TargetFSharpCoreVersion>4.4.1.0</TargetFSharpCoreVersion>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <Name>MerkleTree</Name>
+    <Name>MerkleTree.Tests</Name>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -68,13 +68,20 @@
   <Import Project="..\..\packages\Microsoft.NETCore.App\build\$(__paket__Microsoft_NETCore_App_props).props" Condition="Exists('..\..\packages\Microsoft.NETCore.App\build\$(__paket__Microsoft_NETCore_App_props).props')" Label="Paket" />
   <ItemGroup>
     <Compile Include="AssemblyInfo.fs" />
-    <Compile Include="MerkleTree.fs" />
+    <Compile Include="MerkleTreeTests.fs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Numerics" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MerkleTree\MerkleTree.fsproj">
+      <Name>MerkleTree</Name>
+      <Project>{69b30647-cd2d-4923-a85d-4c0e793949cb}</Project>
+      <Private>True</Private>
+    </ProjectReference>
   </ItemGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
