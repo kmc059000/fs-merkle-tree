@@ -8,6 +8,7 @@ type MerkleNode = {
     Hash: MerkleHash;
     Left: MerkleNode option;
     Right: MerkleNode option;
+    Id: string;
 } with 
     member this.IsLeaf = (Option.isNone this.Left) && (Option.isNone this.Right)
 
@@ -34,14 +35,15 @@ module MerkleHash =
 
 
 module MerkleNode =
-    let leaf hash = { Hash = hash; Left = None; Right = None; }
+    let leaf hash id = { Hash = hash; Id = id; Left = None; Right = None; }
 
     let ofNodes left right =
-        let mh =
+        let mh, leftId, rightId =
             match left, right with
-            | l, Some r -> MerkleHash.concat l.Hash r.Hash
-            | l, None -> l.Hash
-        { Hash = mh; Left = Some left; Right = right; }
+            | l, Some r -> MerkleHash.concat l.Hash r.Hash, l.Id, r.Id
+            | l, None -> l.Hash, l.Id, "<None>"
+        let id = sprintf "\"%s\"-\"%s\"" leftId rightId
+        { Hash = mh; Id = id; Left = Some left; Right = right; }
 
     let ofNodesTuple (left, right) = ofNodes left right
 

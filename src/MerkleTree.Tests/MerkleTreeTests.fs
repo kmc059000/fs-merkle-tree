@@ -3,7 +3,9 @@
 open Expecto
 open MerkleTree
 
-let createNode (text:int) = MerkleHash.ofString (text.ToString()) |> MerkleNode.leaf
+let createNode (id:int) = 
+    let text = id.ToString()
+    MerkleNode.leaf (MerkleHash.ofString text) text
 let createParent left right = MerkleNode.ofNodes left (Some right)
 
 let createTree leafCount = 

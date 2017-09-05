@@ -4,8 +4,8 @@ open Expecto
 open MerkleTree
 
 let createNode text = MerkleHash.ofString text |> MerkleNode.leaf
-let node1 = createNode "Test 1"
-let node2 = createNode "Test 2"
+let node1 = createNode "Test 1" "1"
+let node2 = createNode "Test 2" "2"
 
 [<Tests>]
 let tests = 
