@@ -135,3 +135,23 @@ module MerkleTree =
         loop 1 leaves
 
     let append = Append.append
+
+    //returns the root hash of the recalculated path using hte given hash for the nth item
+    let verifyNth n hash tree =
+        let rec loop n height node =
+            match height with
+            | 0 -> failwith "Could not locate nth node due to empty tree"
+            | 1 -> hash
+            | _ -> 
+                //todo this needs to use the NodeType to traverse the tree.
+                //pull out generic traversal and pass in a fn for handling the node types
+                let nextHeight = height - 1
+                let totalDescendants = 2.0 ** ((float height) - 1.0)
+                let midpoint = int (totalDescendants / 2.0)
+                let nextN, nextNode = 
+                    match n <= midpoint, node.Left, node.Right with
+                    | true, Some l, _ -> n, l
+                    | false, _, Some r -> (n - midpoint), r
+                    | _ -> failwith "Attempting to find nth item which does not exist"
+                loop nextN nextHeight nextNode
+        loop n tree.Depth tree.RootNode
