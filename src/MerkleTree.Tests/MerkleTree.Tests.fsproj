@@ -68,6 +68,8 @@
   <Import Project="..\..\packages\Microsoft.NETCore.App\build\$(__paket__Microsoft_NETCore_App_props).props" Condition="Exists('..\..\packages\Microsoft.NETCore.App\build\$(__paket__Microsoft_NETCore_App_props).props')" Label="Paket" />
   <ItemGroup>
     <Compile Include="AssemblyInfo.fs" />
+    <Compile Include="MerkleHashTests.fs" />
+    <Compile Include="MerkleNodeTests.fs" />
     <Compile Include="MerkleTreeTests.fs" />
   </ItemGroup>
   <ItemGroup>
