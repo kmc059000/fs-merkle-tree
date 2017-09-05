@@ -71,6 +71,7 @@
     <Compile Include="MerkleHashTests.fs" />
     <Compile Include="MerkleNodeTests.fs" />
     <Compile Include="MerkleTreeTests.fs" />
+    <Compile Include="Main.fs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />
